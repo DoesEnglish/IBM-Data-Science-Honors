@@ -1,0 +1,13 @@
+--Make sure you have already downloaded all relevant CSV files from the Coursera class. Otherwise, this code will do literally nothing for you. 
+--Q1 Write and execute a SQL query to list the school names, community names and average attendance for communities with a hardship index of 98.
+
+--A1. I originally tried to use COMMUNITY_AREA_NAME with the ON statement, unfortunately that kept returning a no data error despite the code working with no errors.
+-- Also changed community_area_name in the SELECT statement from CPS to CD which helped the retrieve the data correctly. Just some common errors in syntax. 
+
+select CPS.NAME_OF_SCHOOL, CD.COMMUNITY_AREA_NAME, CPS.AVERAGE_STUDENT_ATTENDANCE, CD.HARDSHIP_INDEX
+from CHICAGO_PUBLIC_SCHOOLS as CPS
+left outer join CENSUS_DATA as CD
+on CPS.COMMUNITY_AREA_NUMBER = CD.COMMUNITY_AREA_NUMBER
+where CD.HARDSHIP_INDEX = 98;
+
+--Should output several schools with other info from select statement. 
