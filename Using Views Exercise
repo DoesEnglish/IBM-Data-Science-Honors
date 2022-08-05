@@ -1,0 +1,25 @@
+#This SQL exercise uses a Skills Network Labs workspace. The code is not going to work unless you have the specific dataset to work with.
+#Code begin
+
+#Creating a view to work with
+CREATE VIEW EMPSALARY AS 
+SELECT EMP_ID, F_NAME, L_NAME, B_DATE, SEX, SALARY
+FROM EMPLOYEES; 
+
+#basic select statement
+SELECT * FROM EMPSALARY;
+
+#Creating a view or replacing if you've already run this before and someting went wrong.
+CREATE OR REPLACE VIEW EMPSALARY  AS 
+SELECT EMP_ID, F_NAME, L_NAME, B_DATE, SEX, JOB_TITLE, MIN_SALARY, MAX_SALARY
+FROM EMPLOYEES, JOBS
+WHERE EMPLOYEES.JOB_ID = JOBS.JOB_IDENT;
+
+#basic select statement
+SELECT * FROM EMPSALARY;
+
+#dropping the view we created if you want
+#DROP VIEW EMPSALARY;
+
+# Checking that everything went well by checking things out with the basic select statement. 
+SELECT * FROM EMPSALARY;
